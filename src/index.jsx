@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
-import { getGames, deleteGame } from './game-service';
+import { getGames, deleteGame, addGame } from './game-service';
 
 class App extends React.Component {
   state = {
     games: [],
+    newName: ''
   };
 
   componentDidMount = async () => {
@@ -18,6 +19,11 @@ class App extends React.Component {
     this.setState({ games });
   }
 
+  addGame = async () => {
+    await addGame(this.state.newName);
+    this.getGames();
+  };
+
   deleteGame = async id => {
     await deleteGame(id);
     this.getGames();
@@ -25,6 +31,7 @@ class App extends React.Component {
 
   render() {
     const { games } = this.state;
+    
     return (
       <div>
         <h1>Game Library</h1>
@@ -33,20 +40,17 @@ class App extends React.Component {
           games.map(game => (
             <div key={game.id}>
               <label>{game.name}</label>
-              <button>edit</button>
-              <button onClick={() => this.deleteGame(game.id)}>delete</button>
+              <div>
+                <button>EDIT</button>
+                <button onClick={() => this.deleteGame(game.id)}>DELETE</button>
+              </div>
             </div>
           ))}
-          <input placeholder="game name" /><button>add new game</button>
+          <input placeholder="new game" onChange={(event)=>this.setState({newName: event.target.value})} value={this.state.newName} />
+          <button onClick={()=>this.addGame()}>ADD</button>
       </div>
     );
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app-container'));
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
