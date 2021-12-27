@@ -44,3 +44,9 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app-container'));
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
