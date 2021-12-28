@@ -22,6 +22,7 @@ class App extends React.Component {
   addGame = async () => {
     await addGame(this.state.newName);
     this.getGames();
+    this.setState({ newName: '' });
   };
 
   deleteGame = async id => {

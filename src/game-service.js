@@ -11,12 +11,14 @@ export async function getGames() {
 
 export async function addGame(gameName) {
   console.log(gameName);
-  const resp = await fetch(`${apiUrl}/game`, { method: 'POST',
+  const resp = await fetch(`${apiUrl}/game`, { 
+    method: 'POST',
     headers: {  
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({name: gameName}) });
+    body: JSON.stringify({name: gameName}) 
+  });
   return await resp.json();
 }
 
