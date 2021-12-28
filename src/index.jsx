@@ -46,7 +46,11 @@ class App extends React.Component {
               </div>
             </div>
           ))}
-          <input placeholder="new game" onChange={(event)=>this.setState({newName: event.target.value})} value={this.state.newName} />
+          <input 
+              placeholder="new game" 
+              onChange={(event)=>this.setState({newName: event.target.value})} 
+              value={this.state.newName}
+              className="validation" />
           <button onClick={()=>this.addGame()}>ADD</button>
       </div>
     );
