@@ -48,9 +48,9 @@ class App extends React.Component {
         <hr />
         {games &&
           games.map(game => (
-            <div key={game.id}>
+            <div key={game.id} className="game-container">
               <label>{game.name}</label>
-              <div>
+              <div className="buttons-container">
                 <button onClick={() => this.getGame(game.id)}>EDIT</button>
                 <button onClick={() => this.deleteGame(game.id)}>DELETE</button>
               </div>

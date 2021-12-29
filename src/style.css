@@ -1,5 +1,76 @@
+@media all and (max-width: 420px) {
+  .game-container {
+    flex-direction: column;
+  }
+  .buttons-container {
+    justify-content: flex-start;
+  }
+}
+
 #app-container {
-  max-width: 800px;
+  max-width: 450px;
   margin: auto;
   padding: 4rem;
 }
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  color: white;
+  min-width: 342px;
+}
+body {
+  background-image: linear-gradient(to right bottom, rgb(35, 48, 229), rgb(20, 183, 62));
+}
+
+h1 {
+  font-size: 4em;
+  margin-bottom: .5em;
+  color: #16428c;
+}
+
+hr {
+  margin-bottom: 3.5em;
+}
+
+
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.7em;
+}
+label {
+  font-size: 1.3em;
+  line-height: 1.7em;
+}
+.buttons-container {
+  display: flex;
+  justify-content: baseline;
+}
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0 1.3em 0 0;
+  color: #0c3478;
+}
+button:hover {
+  color: white;
+}
+
+
+input {
+  margin-top: 4em;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #16428c;
+  outline: none;
+  padding: .3em;
+  color: white;
+}
+input::placeholder {
+  color: #0c3478;
+}
+

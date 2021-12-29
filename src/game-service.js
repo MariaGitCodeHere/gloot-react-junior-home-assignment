@@ -13,8 +13,7 @@ export async function addGame(gameName) {
   console.log(gameName);
   const resp = await fetch(`${apiUrl}/game`, { 
     method: 'POST',
-    headers: {  
-      Accept: 'application/json',
+    headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({name: gameName}) 
@@ -31,8 +30,7 @@ export async function getGame(gameId) {
 // export async function editGame(gameId, gameName) {
 //   const resp = await fetch(`${apiUrl}/game`, { 
 //     method: 'POST',
-//     headers: {  
-//       Accept: 'application/json',
+//     headers: {
 //       'Content-Type': 'application/json'
 //     },
 //     body: JSON.stringify({id: gameId, name: gameName})
