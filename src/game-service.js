@@ -27,16 +27,16 @@ export async function getGame(gameId) {
   return await resp.json();
 }
 
-// export async function editGame(gameId, gameName) {
-//   const resp = await fetch(`${apiUrl}/game`, { 
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({id: gameId, name: gameName})
-//   });
-//   return await resp.json();
-// }
+export async function editGame(gameId, gameName) {
+  const resp = await fetch(`${apiUrl}/game`, { 
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({id: gameId, name: gameName})
+  });
+  return await resp.json();
+}
 
 export async function deleteGame(gameId) {
   const resp = await fetch(`${apiUrl}/game/${gameId}`, { method: 'DELETE' });
