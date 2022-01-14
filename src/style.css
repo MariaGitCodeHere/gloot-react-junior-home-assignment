@@ -84,8 +84,11 @@ input::placeholder {
 
 .validation-editinput {
   font-size: 1.3em;
-  background-color: #233fd8;
+  background-color: #114bad;
   text-align: left;
+
+  margin-left: -9em;
+  margin-top: 0em;
 }
 
 .gameedit-container button {

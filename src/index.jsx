@@ -16,23 +16,23 @@ class App extends React.Component {
   };
 
   componentDidMount = async () => {
-    this.getGames();
+    this.runGetGames();
   };
 
-  getGames = async () => {
+  runGetGames = async () => {
     const games = await getGames();
     this.setState({ games });
   };
 
-  addGame = async () => {
+  runAddGame = async () => {
     await addGame(this.state.newNameAdd);
-    this.getGames();
+    this.runGetGames();
     this.setState({ newNameAdd: '' });
   };
 
-  getGame = async id => {
+  runGetGame = async id => {
     const editGame = await getGame(id);
-    this.getGames();
+    this.runGetGames();
     this.buildEditForm(editGame);
   };
 
@@ -53,24 +53,30 @@ class App extends React.Component {
     elementInput.classList.add("validation-editinput");
     elementButton.textContent = 'UPDATE';
 
-    elementInput.onchange = () => 
-  	{(event)=>this.setState({newNameEdit: event.target.value})};
+    elementInput.onchange = () => {
+      (event) => {
+        this.setState({newNameEdit: event.target.value})
+        console.log(event.target.value);
+      }
+    };
     elementButton.onclick = () => 
-  	{()=>this.editGame({id: editGame.id, name: this.state.newNameEdit})};
+  	{()=>this.editGame({id: editGame.id, name: this.state.newNameEdit})
+  // console.log({id: editGame.id, name: this.state.newNameEdit})
+};
 
     this.ref.appendChild(elementDiv);
     console.log(this.ref);
   }
 
-  editGame = async (id, name) => {
+  runEditGame = async (id, name) => {
     await editGame(id, name);
-    this.getGames();
+    this.runGetGames();
     // удалить buildEditForm
   }
 
-  deleteGame = async id => {
+  runDeleteGame = async id => {
     await deleteGame(id);
-    this.getGames();
+    this.runGetGames();
   };
 
   render() {
@@ -86,8 +92,8 @@ class App extends React.Component {
               <label>{game.name}</label>
               <div ref={this.setRef}></div>
               <div className="buttons-container">
-                <button onClick={() => this.getGame(game.id)}>EDIT</button>
-                <button onClick={() => this.deleteGame(game.id)}>DELETE</button>
+                <button onClick={() => this.runGetGame(game.id)}>EDIT</button>
+                <button onClick={() => this.runDeleteGame(game.id)}>DELETE</button>
               </div>
             </div>
           ))}
@@ -96,7 +102,7 @@ class App extends React.Component {
               onChange={(event)=>this.setState({newNameAdd: event.target.value})} 
               value={this.state.newNameAdd}
               className="validation" />
-          <button onClick={()=>this.addGame()}>ADD</button>
+          <button onClick={()=>this.renAddGame()}>ADD</button>
       </div>
     );
   };
